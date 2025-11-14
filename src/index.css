@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply basic styles and ensure a smooth theme transition on the background */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: transparent; 
+}
