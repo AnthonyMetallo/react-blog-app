@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import BlogPostCard from '../components/Blog/BlogPostCard';
+import { AuthContext } from '../context/AuthContext';
 
 const BlogPostsPage = () => {
+  const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -10,7 +12,6 @@ const BlogPostsPage = () => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then((response) => response.json())
       .then((data) => {
-        // Add preview text and static author for each post
         const processed = data.map((post) => ({
           ...post,
           excerpt: post.body.length > 100 ? post.body.slice(0, 100) + '...' : post.body,
@@ -32,7 +33,9 @@ const BlogPostsPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 mt-10">
-      <h1 className="text-4xl font-bold text-center mb-8">Blog Posts</h1>
+      <h1 className="text-4xl font-bold text-center mb-2">Blog Posts</h1>
+      <p className="text-center text-gray-500 text-sm mb-8">Welcome, {user?.username}!</p>
+      
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <BlogPostCard key={post.id} post={post} />
