@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -10,9 +10,12 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  if (isAuthenticated) {
-    navigate("/");
-  }
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,7 +25,7 @@ const LoginPage = () => {
       return;
     }
 
-    login(username); // Password ignored just like assignment requirement example
+    login(username); // Password ignored by design
     navigate("/");
   };
 
