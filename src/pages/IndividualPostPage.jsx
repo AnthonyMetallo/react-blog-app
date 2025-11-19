@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CommentList from '../components/Blog/CommentList';
 import CommentForm from '../components/Blog/CommentForm';
+import { useAuth } from '../context/AuthContext';
 
 const IndividualPostPage = () => {
   const { postId } = useParams();
+  const { isAuthenticated } = useAuth();
   const [post, setPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -64,7 +66,7 @@ const IndividualPostPage = () => {
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
   if (!post) return null;
 
-  return (
+return (
     <div className="max-w-3xl mx-auto px-4 mt-10">
       <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
       <p className="text-gray-600 mb-2">
@@ -73,8 +75,16 @@ const IndividualPostPage = () => {
       <p className="text-gray-800 mb-8 whitespace-pre-wrap">{post.body}</p>
 
       <h2 className="text-2xl font-semibold mb-4">Comments</h2>
+
       <CommentList comments={comments} />
-      <CommentForm onAddComment={handleAddComment} />
+
+      {isAuthenticated ? (
+        <CommentForm onAddComment={handleAddComment} />
+      ) : (
+        <p className="mt-6 text-center text-red-500 bg-red-100 dark:bg-red-800 dark:text-red-200 p-4 rounded-lg">
+          You must be logged in to post a comment.
+        </p>
+      )}
     </div>
   );
 };
