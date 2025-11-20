@@ -34,7 +34,10 @@ const BlogPostsPage = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 mt-10">
       <h1 className="text-4xl font-bold text-center mb-2">Blog Posts</h1>
-      <p className="text-center text-gray-500 text-sm mb-8">Welcome, {user?.username}!</p>
+
+      <p className="text-center text-gray-500 text-sm mb-8">
+        Welcome{user?.username ? `, ${user.username}` : ''}!
+      </p>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
