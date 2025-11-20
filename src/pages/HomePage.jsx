@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+mport { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const HomePage = () => {
@@ -6,11 +6,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleExplore = () => {
-    if (isAuthenticated) {
-      navigate("/posts");
-    } else {
-      navigate("/login");
-    }
+    navigate("/posts"); // Always go to blog posts
   };
 
   return (
