@@ -7,33 +7,34 @@ const HomePage = () => {
 
   const handleExplore = () => {
     if (isAuthenticated) {
-      navigate("/posts"); // or "/blog" depending on your routing
+      navigate("/posts");
     } else {
       navigate("/login");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center bg-gray-50 dark:bg-gray-900 px-6">
-      <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen text-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 px-6">
+      
+      <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 text-gray-900 dark:text-white drop-shadow">
         Welcome to <span className="text-blue-600">MyBlog</span> ✍️
       </h1>
 
-      <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8">
-        A simple and clean blogging platform where you can share your thoughts, explore content, and grow your ideas. Start by logging in or jump straight into the blog.
+      <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mb-10 leading-relaxed">
+        A clean, minimal blogging platform where ideas grow. Join the conversation or explore posts written by others.
       </p>
 
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-5">
         <button
           onClick={() => navigate("/login")}
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg text-lg hover:bg-blue-500 transition"
+          className="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow hover:bg-blue-500 transition"
         >
           Login
         </button>
 
         <button
           onClick={handleExplore}
-          className="px-6 py-3 border border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg text-lg hover:bg-blue-100 dark:hover:bg-gray-800 transition"
+          className="px-8 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-300 rounded-lg text-lg font-semibold hover:bg-blue-50 dark:hover:bg-gray-700 transition"
         >
           Explore Blog
         </button>
