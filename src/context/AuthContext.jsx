@@ -1,11 +1,16 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 // Create the context
 export const AuthContext = createContext();
 
+// Custom hook (this is what was missing!)
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
+
 // Provider component
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);           // will store username or user object
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Load stored login from localStorage when app starts
@@ -19,18 +24,14 @@ export function AuthProvider({ children }) {
 
   // Login handler
   const login = (username, password) => {
-    // Simulated simple validation - replace with real API if needed
     if (username.trim() === "" || password.trim() === "") {
       return { success: false, message: "Username and password required." };
     }
 
-    // Mock success - replace with backend validation if needed
     const userData = { username };
 
-    // Persist login
     localStorage.setItem("authUser", JSON.stringify(userData));
 
-    // Update state
     setUser(userData);
     setIsAuthenticated(true);
 
