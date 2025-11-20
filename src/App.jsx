@@ -19,17 +19,10 @@ const App = () => {
           {/* Public Landing Page */}
           <Route path="/" element={<HomePage />} />
 
-          {/* Protected blog content */}
-          <Route
-            path="/posts"
-            element={
-              <ProtectedRoute>
-                <BlogPostsPage />
-              </ProtectedRoute>
-            }
-          />
+          {/* Public Blog Posts */}
+          <Route path="/posts" element={<BlogPostsPage />} />
 
-          {/* Individual Post - should be protected too */}
+          {/* Individual Post (optional: you can also make this public) */}
           <Route
             path="/post/:postId"
             element={
