@@ -19,13 +19,19 @@ const LoginPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+  
     if (!username.trim() || !password.trim()) {
       setError("Both fields are required.");
       return;
     }
-
-    login(username); // Password ignored by design
+  
+    const result = login(username, password);
+  
+    if (!result.success) {
+      setError(result.message);
+      return;
+    }
+  
     navigate("/");
   };
 
