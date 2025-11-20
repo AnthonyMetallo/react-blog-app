@@ -22,15 +22,7 @@ const App = () => {
           {/* Public Blog Posts */}
           <Route path="/posts" element={<BlogPostsPage />} />
 
-          {/* Individual Post (optional: you can also make this public) */}
-          <Route
-            path="/post/:postId"
-            element={
-              <ProtectedRoute>
-                <IndividualPostPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/post/:postId" element={<IndividualPostPage />} />
 
           {/* Public route */}
           <Route path="/contact" element={<ContactPage />} />
