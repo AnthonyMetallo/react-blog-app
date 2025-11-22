@@ -15,11 +15,9 @@ const IndividualPostPage = () => {
   useEffect(() => {
     const fetchPostAndComments = async () => {
       try {
-        // Fetch post
         const postRes = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
         const postData = await postRes.json();
 
-        // Force static author info
         const updatedPost = {
           ...postData,
           authorName: 'Anthony Metallo',
@@ -27,7 +25,6 @@ const IndividualPostPage = () => {
         };
         setPost(updatedPost);
 
-        // Fetch comments
         const commentsRes = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
         const commentsData = await commentsRes.json();
         setComments(commentsData);
@@ -66,15 +63,23 @@ const IndividualPostPage = () => {
   if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
   if (!post) return null;
 
-return (
+  return (
     <div className="max-w-3xl mx-auto px-4 mt-10">
-      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-600 mb-2">
+      <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+        {post.title}
+      </h1>
+
+      <p className="text-gray-600 dark:text-gray-400 mb-2">
         By <span className="font-semibold">{post.authorName}</span> ({post.authorEmail})
       </p>
-      <p className="text-gray-800 mb-8 whitespace-pre-wrap">{post.body}</p>
 
-      <h2 className="text-2xl font-semibold mb-4">Comments</h2>
+      <p className="text-gray-800 dark:text-gray-300 mb-8 whitespace-pre-wrap leading-relaxed">
+        {post.body}
+      </p>
+
+      <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+        Comments
+      </h2>
 
       <CommentList comments={comments} />
 
