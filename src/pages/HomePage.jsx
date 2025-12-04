@@ -13,11 +13,11 @@ const HomePage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen text-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 px-6">
       
       <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 text-gray-900 dark:text-white drop-shadow">
-        Welcome to <span className="text-blue-600">MyBlog</span> ✍️
+        Welcome to <span className="text-blue-600">MyBlog</span>
       </h1>
 
       <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mb-10 leading-relaxed">
-        A clean, minimal blogging platform where ideas grow. Join the conversation or explore posts written by others.
+        A clean, minimal blogging platform to share thoughts and ideas. Join the conversation or explore posts written by others.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-5">
