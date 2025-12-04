@@ -18,9 +18,7 @@ const Navbar = () => {
             Blog Posts
           </Link>
 
-          <Link to="/post/1" className="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">
-            Example Post
-          </Link>
+         
 
           <Link to="/contact" className="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">
             Contact
